@@ -21,6 +21,6 @@ Then add **hubot-googl-helper** to your `external-scripts.json`:
 ## Sample Interaction
 
 ```
-user1>> hubot hello
-hubot>> hello!
+user1>> hubot shorten https://google.com
+hubot>> here it is https://goo.gl/0xP5
 ```
