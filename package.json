@@ -9,14 +9,15 @@
 
   "repository": {
     "type": "git",
-    "url": "git://github.com/hubot-scripts/hubot-googl-helper.git"
+    "url": "git@github.com:constantx/hubot-googl-helper.git"
   },
 
   "bugs": {
-    "url": "https://github.com/hubot-scripts/hubot-googl-helper/issues"
+    "url": "https://github.com/constantx/hubot-googl-helper/issues"
   },
 
   "dependencies": {
+    "googleapis": "^2.0.5"
   },
 
   "peerDependencies": {
