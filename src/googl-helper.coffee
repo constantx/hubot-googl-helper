@@ -2,21 +2,34 @@
 #   A hubot script for goo.gl url shortener API
 #
 # Configuration:
-#   LIST_OF_ENV_VARS_TO_SET
+#   GOOGLE_API_KEY
 #
 # Commands:
-#   hubot hello - <what the respond trigger does>
-#   orly - <what the hear trigger does>
-#
-# Notes:
-#   <optional notes required for the script>
+#   hubot shorten {url} - shorten a long url
 #
 # Author:
 #   Truong Nguyen <constantx@gmail.com>
 
-module.exports = (robot) ->
-  robot.respond /hello/, (res) ->
-    res.reply "hello!"
+google = require('googleapis')
+googleAPIKey = process.env.GOOGLE_API_KEY
+urlshortener = google.urlshortener
+  version: 'v1'
+  auth: googleAPIKey
 
-  robot.hear /orly/, ->
-    res.send "yarly"
+module.exports = (robot) ->
+
+  unless googleAPIKey?
+    robot.logger.warning 'Need GOOGLE_API_KEY'
+    return
+
+  robot.respond /shorten (.*)/i, (msg) ->
+    url = msg.match[1]
+    console.log('shortening url', url);
+    urlshortener.url.insert { resource: longUrl: url }, (err, result) ->
+      if (err)
+        return msg.send "oh no, got an error: #{err.msg}"
+
+      return msg.send "here it is #{result.id}"
+
+  # @todo get long URL from shortened URL
+  # @todo get stat for a shortened URL

@@ -1,7 +1,7 @@
 {
   "name": "hubot-googl-helper",
   "description": "A hubot script for goo.gl url shortener API",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "author": "Truong Nguyen <constantx@gmail.com>",
   "license": "MIT",
 
